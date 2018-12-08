@@ -38,13 +38,20 @@ int main() {
     }
     // if nein
     else if (!strcmp(answer, "N") | !strcmp(answer, "n")){
-      break;
+      printf("Do you want to delete the memory (Y/N)? " );
+      fgets(answer, 200, stdin);
+      len = strlen(answer);
+      answer[len-1] = 0;
+      if (!strcmp(answer, "Y") | !strcmp(answer, "y")){
+        break;
+      }
     }
     // if user is sh*tposting or inputs wrong
     else{
       printf("\nWai u do dis\n\n");
     }
   }
+
   printf("Okie, goodbye!\n");
   // destroy memory
   shmctl(shmid, IPC_RMID, NULL);
